@@ -1,7 +1,6 @@
 # Retrive JSON Data from file
 
 Retrive JSON Data from required file (and replace with it)
-(currently support only top level require methods)
 
 ```
 npm install -g retrieve-json

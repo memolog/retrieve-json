@@ -1,0 +1,17 @@
+{
+  "name": "retrieve-json",
+  "version": "1.0.1",
+  "description": "Fetch json data and replace require('*.json') statements with JSON data",
+  "bin": "bin.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yutaka Yamaguchi",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^2.13.0",
+    "escodegen": "^1.9.0",
+    "esprima": "^4.0.0"
+  }
+}

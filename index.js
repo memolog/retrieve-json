@@ -42,7 +42,10 @@ module.exports = function retriveJSONData(inputFilePath, options) {
                 const initArgValue = initArg && initArg.value;
                 if (initArgValue && /\.json$/i.test(initArgValue)) {
                   const { dir } = path.parse(inputFilePath);
-                  const jsonPath = path.resolve(process.cwd(), dir, initArgValue);
+                  const prefix = options.prefix || '';
+                  const paths = path.parse(initArgValue);
+                  const jsonFilePath = paths.dir + '/' + prefix + paths.name + paths.ext;
+                  const jsonPath = path.resolve(process.cwd(), dir, jsonFilePath);
                   const exists = fs.existsSync(jsonPath);
                   if (!exists) {
                     return;

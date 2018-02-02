@@ -12,6 +12,7 @@ function main(args) {
     .version(pkg.version)
     .option('-i, --input <file')
     .option('-o, --output <file>')
+    .option('--prefix <string>')
     .option('--stdout')
     .option('--override')
     .parse(args);
@@ -19,7 +20,8 @@ function main(args) {
   retriveJSONData(program.input, {
     output: program.output,
     dist: program.dist,
-    override: program.override
+    override: program.override,
+    prefix: program.prefix
   })
     .then(output => {
       if (program.stdout) {

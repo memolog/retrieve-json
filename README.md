@@ -1,0 +1,36 @@
+# Retrive JSON Data from file
+
+Retrive JSON Data from required file (and replace with it)
+(currently support only top level require methods)
+
+```
+npm install -g retrieve-json
+```
+
+## Example
+
+input.js
+
+```
+const config = require('data.json');
+```
+
+data.json
+
+```
+{
+  "foo": "bar"
+}
+```
+
+```
+retrieve-json -i input.js -o output.js
+```
+
+output.js
+
+```
+const config = {
+  'foo': 'bar'
+}
+```

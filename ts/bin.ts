@@ -4,11 +4,10 @@
 
 const program = require('commander');
 const retriveJSONData = require('./index');
-const pkg = require('./package.json');
+const pkg = require('../package.json');
 
 function main(args) {
   program
-    .version(pkg)
     .version(pkg.version)
     .option('-i, --input <file')
     .option('-o, --output <file>')

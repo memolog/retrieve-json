@@ -11,12 +11,14 @@ function main(args) {
         .option('--prefix <string>')
         .option('--stdout')
         .option('--override')
+        .option('--fallback')
         .parse(args);
     retriveJSONData(program.input, {
         output: program.output,
         dist: program.dist,
         override: program.override,
-        prefix: program.prefix
+        prefix: program.prefix,
+        fallback: program.fallback
     })
         .then(function (output) {
         if (program.stdout) {

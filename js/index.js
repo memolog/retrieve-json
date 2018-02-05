@@ -40,8 +40,17 @@ module.exports = function retriveJSONData(inputFilePath, options) {
                                 var jsonFilePath = paths.dir + '/' + prefix + paths.name + paths.ext;
                                 var jsonPath = path.resolve(process.cwd(), dir, jsonFilePath);
                                 var exists = fs.existsSync(jsonPath);
-                                if (!exists) {
-                                    return node;
+                                if (!fs.existsSync(jsonPath)) {
+                                    if (options.fallback) {
+                                        jsonFilePath = paths.dir + '/' + paths.name + paths.ext;
+                                        jsonPath = path.resolve(process.cwd(), dir, jsonFilePath);
+                                        if (!fs.existsSync(jsonPath)) {
+                                            return node;
+                                        }
+                                    }
+                                    else {
+                                        return node;
+                                    }
                                 }
                                 var jsonString = fs.readFileSync(jsonPath, {
                                     encoding: 'utf8'

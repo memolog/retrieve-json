@@ -1,6 +1,6 @@
 {
   "name": "retrieve-json",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Fetch json data and replace require('*.json') statements with JSON data",
   "bin": "js/bin.js",
   "main": "js/index.js",

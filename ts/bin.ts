@@ -15,6 +15,7 @@ function main(args) {
     .option('--stdout')
     .option('--override')
     .option('--fallback')
+    .option('--inline <string>')
     .parse(args);
 
   retriveJSONData(program.input, {
@@ -22,7 +23,8 @@ function main(args) {
     dist: program.dist,
     override: program.override,
     prefix: program.prefix,
-    fallback: program.fallback
+    fallback: program.fallback,
+    inline: program.inline
   })
     .then(output => {
       if (program.stdout) {

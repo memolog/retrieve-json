@@ -9,6 +9,7 @@ const path = require('path');
 module.exports = function retriveJSONData(inputFilePath, options) {
   return new Promise((fulfill, reject) => {
     const inputFileAbsolutePath = path.resolve(process.cwd(), inputFilePath);
+    const inlineData = options.inline && JSON.parse(options.inline) || {};
     fs.readFile(
       inputFileAbsolutePath,
       {
@@ -58,9 +59,14 @@ module.exports = function retriveJSONData(inputFilePath, options) {
                       return node;
                     }
                   }
-                  const jsonString = fs.readFileSync(jsonPath, {
+                  let jsonString = fs.readFileSync(jsonPath, {
                     encoding: 'utf8'
                   });
+                  if (inlineData[paths.name]) {
+                    let json = JSON.parse(jsonString);
+                    json = Object.assign(json, inlineData[paths.name]);
+                    jsonString = JSON.stringify(json);
+                  }
                   return esprima.parse(`${kind} ${idName} = ${jsonString}`);
                 }
               }
